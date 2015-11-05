@@ -1,5 +1,5 @@
 import SonatypeKeys._
-import PgpKeys.publishSigned
+//import PgpKeys.publishSigned
 
 organization := "com.github.migralito"
 
@@ -44,7 +44,7 @@ sonatypeSettings
 
 profileName := "com.github.migralito" // required by plugin sbt-sonatype
 
-publish := publishSigned.value
+//publish := publishSigned.value
 
 // TODO search how to do this. It didn't work before. Was isSnapshot == true?
 //publish := {

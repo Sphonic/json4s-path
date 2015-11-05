@@ -34,7 +34,11 @@ class JsonPath(jValue: JValue) {
       case Indexed(name, i) :: xs  => diveInto((jv \ name)(i.toInt), xs)
       case x                       => throw new RuntimeException(s"Invalid path '$path' at '$x'")
     }
-    diveInto(jValue, (if (path.startsWith("$.")) path.drop(2) else path) .split('.').toList)
+
+    path match {
+      case "$" => ext.simpleExtract(jValue)
+      case _ => diveInto(jValue, (if (path.startsWith("$.")) path.drop(2) else path) .split('.').toList)
+    }
   }
 
 
